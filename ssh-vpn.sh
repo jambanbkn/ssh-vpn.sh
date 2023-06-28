@@ -277,7 +277,6 @@ clear
 # download script
 cd /usr/bin
 # menu
-wget -O menu-update "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/menu-update.sh"
 wget -O menu "https://raw.githubusercontent.com/kuhing/menu.sh/menu.sh/menu.sh"
 wget -O m-bot "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/m-bot.sh"
 wget -O m-ip "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/m-ip.sh"
@@ -320,7 +319,6 @@ wget -O deltrgo "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/xray/delt
 wget -O renewtrgo "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/xray/renewtrgo.sh"
 wget -O cektrgo "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/xray/cektrgo.sh"
 
-chmod +x menu-update
 chmod +x menu
 chmod +x m-bot
 chmod +x m-ip
@@ -361,9 +359,8 @@ chmod +x trialtrojango
 chmod +x deltrgo
 chmod +x renewtrgo
 chmod +x cektrgo
-clear
 cd
-
+clear
 
 cat > /etc/cron.d/re_otm <<-END
 SHELL=/bin/sh
