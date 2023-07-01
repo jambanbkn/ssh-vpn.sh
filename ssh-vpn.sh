@@ -124,16 +124,20 @@ install_ssl(){
 }
 
 # install webserver
-apt -y install nginx
-cd
+apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/nginx.conf"
+curl https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/nginx.conf > /etc/nginx/nginx.conf
+curl https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/vps.conf > /etc/nginx/conf.d/vps.conf
+sed -i 's/listen = \/var\/run\/php-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/fpm/pool.d/www.conf
+useradd -m vps;
 mkdir -p /home/vps/public_html
-rm /etc/nginx/conf.d/vps.conf
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/vps.conf"
+echo "<?php phpinfo() ?>" > /home/vps/public_html/info.php
+chown -R www-data:www-data /home/vps/public_html
+chmod -R g+rw /home/vps/public_html
+cd /home/vps/public_html
+wget -O /home/vps/public_html/index.html "https://raw.githubusercontent.com/Tarap-Kuhing/SCVPS/main/ssh/index.html1"
 /etc/init.d/nginx restart
-
 # install badvpn
 cd
 wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/newudpgw"
@@ -251,6 +255,8 @@ sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dr
 
 #install bbr dan optimasi kernel
 wget https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+#install swapkvm
+wget https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/swapkvm.sh && chmod +x swapkvm.sh && ./swapkvm.sh
 
 # blockir torrent
 iptables -A FORWARD -m string --string "get_peers" --algo bm -j DROP
@@ -356,6 +362,8 @@ wget -O renewtrgo "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/xray/re
 clear
 wget -O cektrgo "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/xray/cektrgo.sh"
 clear
+wget -O swapkvm "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/swapkvm.sh"
+clear
 chmod +x menu
 chmod +x menu-update
 chmod +x m-bot
@@ -399,7 +407,9 @@ chmod +x renewtrgo
 chmod +x cektrgo
 cd
 clear
-
+echo "0 0 * * * root xp" >> /etc/crontab
+echo "0 0 * * * root delexp" >> /etc/crontab
+echo "0 0 * * * root clearlog" >> /etc/crontab
 cat > /etc/cron.d/re_otm <<-END
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
