@@ -352,6 +352,10 @@ wget -O renewtrgo "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/xray/re
 clear
 wget -O cektrgo "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/xray/cektrgo.sh"
 clear
+wget -O user-lock "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/user-lock.sh"
+clear
+wget -O user-unlock "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/user-unlock.sh"
+clear
 
 chmod +x menu
 chmod +x menu-update
@@ -393,6 +397,8 @@ chmod +x trialtrojango
 chmod +x deltrgo
 chmod +x renewtrgo
 chmod +x cektrgo
+chmod +x user-lock
+chmod +x user-unlock
 cd
 clear
 cat > /etc/cron.d/re_otm <<-END
