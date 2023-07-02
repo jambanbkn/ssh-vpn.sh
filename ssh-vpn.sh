@@ -2,6 +2,7 @@
 #
 # ==================================================
 # initializing var
+clear
 export DEBIAN_FRONTEND=noninteractive
 MYIP=$(wget -qO- ipinfo.io/ip);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
@@ -24,7 +25,7 @@ chmod +x /etc/pam.d/common-password
 clear
 # go to root
 cd
-
+clear
 # Edit file /etc/systemd/system/rc-local.service
 cat > /etc/systemd/system/rc-local.service <<-END
 [Unit]
@@ -59,20 +60,20 @@ systemctl start rc-local.service
 # disable ipv6
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
 sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
-
+clear
 #update
 apt update -y
 apt upgrade -y
 apt dist-upgrade -y
 apt-get remove --purge ufw firewalld -y
 apt-get remove --purge exim4 -y
-
+clear
 #install jq
 apt -y install jq
 
 #install shc
 apt -y install shc
-
+clear
 # install wget and curl
 apt -y install wget curl
 
@@ -80,7 +81,7 @@ apt -y install wget curl
 apt-get install figlet -y
 apt-get install ruby -y
 gem install lolcat
-
+clear
 # set time GMT +7
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 
@@ -121,18 +122,18 @@ install_ssl(){
         sleep 3s
     fi
 }
-
+clear
 # install webserver
-apt -y install nginx
-cd
+apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/nginx.conf"
 mkdir -p /home/vps/public_html
 rm /etc/nginx/conf.d/vps.conf
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/Tarap-Kuhing/tarong/main/tarong/SSH/vps.conf"
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/vps.conf"
 /etc/init.d/nginx restart
-
+cd
+clear
 # install badvpn
 cd
 wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/newudpgw"
@@ -150,6 +151,7 @@ screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7700 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7800 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7900 --max-clients 500
 # setting port ssh
+clear
 cd
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 500' /etc/ssh/sshd_config
@@ -205,14 +207,11 @@ cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 # konfigurasi stunnel
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
-
-#OpenVPN
-wget https://raw.githubusercontent.com/Tarap-Kuhing/v/main/OPENVPN/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
 clear
-# // install lolcat
-wget https://raw.githubusercontent.com/Tarap-Kuhing/tarong/main/tarong/SSH/lolcat.sh &&  chmod +x lolcat.sh && ./lolcat.sh
-# install fail2ban
+#OpenVPN
+wget https://raw.githubusercontent.com/Tarap-Kuhing/v/main/OPENVPN/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh# install fail2ban
 apt -y install fail2ban
+clear
 # Instal DDOS Flate
 if [ -d '/usr/local/ddos' ]; then
 	echo; echo; echo "Please un-install the previous version first"
@@ -239,7 +238,7 @@ echo '.....done'
 echo; echo 'Installation has completed.'
 echo 'Config file is at /usr/local/ddos/ddos.conf'
 echo 'Please send in your comments and/or suggestions to zaf@vsnl.com'
-
+clear
 # banner /etc/issue.net
 sleep 1
 echo -e "[ ${green}INFO$NC ] Settings banner"
@@ -247,11 +246,11 @@ wget -q -O /etc/issue.net "https://raw.githubusercontent.com/Tarap-Kuhing/v/main
 chmod +x /etc/issue.net
 echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
-
+clear
 #install bbr dan optimasi kernel
 wget https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/bbr.sh && chmod +x bbr.sh && ./bbr.sh
-
 # blockir torrent
+clear
 iptables -A FORWARD -m string --string "get_peers" --algo bm -j DROP
 iptables -A FORWARD -m string --string "announce_peer" --algo bm -j DROP
 iptables -A FORWARD -m string --string "find_node" --algo bm -j DROP
@@ -355,6 +354,7 @@ wget -O renewtrgo "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/xray/re
 clear
 wget -O cektrgo "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/xray/cektrgo.sh"
 clear
+
 chmod +x menu
 chmod +x menu-update
 chmod +x m-bot
@@ -398,7 +398,6 @@ chmod +x renewtrgo
 chmod +x cektrgo
 cd
 clear
-
 cat > /etc/cron.d/re_otm <<-END
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
