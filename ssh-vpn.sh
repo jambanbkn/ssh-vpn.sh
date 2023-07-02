@@ -131,12 +131,11 @@ rm /etc/nginx/sites-available/default
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/nginx.conf"
 rm /etc/nginx/conf.d/vps.conf
 wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/vps.conf"
-/etc/init.d/nginx restart
+/etc/init.d/nginx
 
 mkdir /etc/systemd/system/nginx.service.d
 printf "[Service]\nExecStartPost=/bin/sleep 0.1\n" > /etc/systemd/system/nginx.service.d/override.conf
 rm /etc/nginx/conf.d/default.conf
-service nginx restart
 cd
 # install badvpn
 cd
