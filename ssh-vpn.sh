@@ -328,8 +328,6 @@ wget -O port-ssl "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/port/por
 clear
 wget -O port-ovpn "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/port/port-ovpn.sh"
 clear
-wget -O xp "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/xp.sh"
-clear
 wget -O acs-set "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/acs-set.sh"
 clear
 wget -O sshws "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/sshws.sh"
@@ -382,7 +380,6 @@ chmod +x restart
 chmod +x bw
 chmod +x port-ssl
 chmod +x port-ovpn
-chmod +x xp
 chmod +x acs-set
 chmod +x sshws
 chmod +x status
@@ -413,6 +410,13 @@ END
 cat > /home/re_otm <<-END
 7
 END
+if [ ! -f "/etc/cron.d/bckp_otm" ]; then
+cat> /etc/cron.d/bckp_otm << END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+0 5 * * * root /usr/bin/bottelegram
+END
+fi
 
 service cron restart >/dev/null 2>&1
 service cron reload >/dev/null 2>&1
