@@ -152,14 +152,11 @@ clear
 # install webserver
 apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
 clear
-rm /etc/nginx/sites-enabled/default
-rm /etc/nginx/sites-available/default
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/nginx.conf"
 clear
 mkdir -p /home/vps/public_html
 wget -O /home/vps/public_html/index.html "https://raw.githubusercontent.com/Tarap-Kuhing/scriptvps/main/ssh/index.html1"
 clear
-rm /etc/nginx/conf.d/vps.conf
 wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/vps.conf"
 /etc/init.d/nginx restart
 cd
@@ -191,7 +188,8 @@ sed -i '/Port 22/a Port 58080' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 200' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 22' /etc/ssh/sshd_config
 /etc/init.d/ssh restart
-echo "=== Install Dropbear ==="
+echo -e "${yellow}=== Install Dropbear ===${Nc}"
+sleep 1
 # install dropbear
 apt -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
@@ -272,7 +270,8 @@ echo 'Please send in your comments and/or suggestions to zaf@vsnl.com'
 clear
 # banner /etc/issue.net
 sleep 1
-echo -e "[ ${green}INFO$NC ] Settings banner"
+echo -e "[ ${blue}INFO$NC ] ${yellow}Settings banner${Nc}"
+sleep 1
 wget -q -O /etc/issue.net "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/issue.net"
 chmod +x /etc/issue.net
 echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
