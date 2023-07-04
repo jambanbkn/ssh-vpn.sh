@@ -321,7 +321,7 @@ clear
 clear
 #wget -O menu-vless "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/menu-vless.sh"
 clear
-wget -O menu-ssws "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/menu-ssws.sh"
+#wget -O menu-ssws "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/menu-ssws.sh"
 clear
 #wget -O running "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/running.sh"
 clear
