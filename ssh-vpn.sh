@@ -239,7 +239,7 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
 clear
 #OpenVPN
-wget https://raw.githubusercontent.com/Tarap-Kuhing/scriptvps/main/ssh/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
+wget https://raw.githubusercontent.com/Tarap-Kuhing/scriptvps/main/ssh/vpn.sh && chmod +x vpn.sh && ./vpn.sh
 clear
 apt -y install fail2ban
 clear
@@ -299,96 +299,15 @@ netfilter-persistent save
 netfilter-persistent reload
 clear
 # download script
-#cd /usr/bin
+cd /usr/bin
 # menu
-#wget -O menu "https://raw.githubusercontent.com/kuhing/menu.sh/menu.sh/menu.sh"
 clear
-#wget -O menu-update "https://raw.githubusercontent.com/jambanbkn/menu-update.sh/menu-update.sh/menu-update.sh"
+wget -O acs-set "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/acs-set.sh"
 clear
-#wget -O m-bot "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/m-bot.sh"
+wget -O sshws "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/sshws.sh"
 clear
-#wget -O m-ip "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/m-ip.sh"
-clear
-#wget -O menu-vmess "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/menu-vmess.sh"
-clear
-#wget -O menu-theme "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/menu-theme.sh"
-clear
-#wget -O menu-backup "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/menu-backup.sh"
-clear
-#wget -O menu-uuid "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/menu-uuid.sh"
-clear
-#wget -O menu-vmess "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/menu-vmess.sh"
-clear
-#wget -O menu-vless "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/menu-vless.sh"
-clear
-#wget -O menu-ssws "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/menu-ssws.sh"
-clear
-#wget -O running "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/running.sh"
-clear
-#wget -O clearcache "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/clearcache.sh"
-clear
-#wget -O menu-trgo "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/menu-trgo.sh"
-clear
-#wget -O menu-trojan "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/menu-trojan.sh"
-clear
-#wget -O menu-ssh "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/menu-ssh.sh"
-clear
-#wget -O menu-set "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/menu-set.sh"
-clear
-#wget -O menu-domain "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/menu-domain.sh"
-clear
-#wget -O add-host "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/add-host.sh"
-clear
-#wget -O port-change "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/port/port-change.sh"
-clear
-#wget -O certv2ray "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/xray/certv2ray.sh"
-clear
-#wget -O menu-webmin "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/menu-webmin.sh"
-clear
-#wget -O speedtest "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/speedtest_cli.py"
-clear
-#wget -O about "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/about.sh"
-clear
-#wget -O auto-reboot "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/auto-reboot.sh"
-clear
-#wget -O restart "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/restart.sh"
-clear
-#wget -O bw "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/bw.sh"
-clear
-#wget -O port-ssl "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/port/port-ssl.sh"
-clear
-#wget -O xp "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/xp.sh"
-clear
-#wget -O acs-set "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/acs-set.sh"
-clear
-#wget -O sshws "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/sshws.sh"
-clear
-#wget -O status "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/status.sh"
-clear
-#wget -O menu-bckp "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/menu/menu-bckp.sh"
-clear
-#wget -O backup "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/backup/backup.sh"
-clear
-#wget -O restore "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/backup/restore.sh"
-clear
-#wget -O jam "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/jam.sh"
-clear
-#wget -O addtrgo "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/xray/addtrgo.sh"
-clear
-#wget -O trialtrojango "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/xray/trialtrojango.sh"
-clear
-#wget -O deltrgo "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/xray/deltrgo.sh"
-clear
-#wget -O renewtrgo "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/xray/renewtrgo.sh"
-clear
-#wget -O cektrgo "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/xray/cektrgo.sh"
-clear
-#wget -O user-lock "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/user-lock.sh"
-clear
-#wget -O user-unlock "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/user-unlock.sh"
-clear
-
-
+chmod +x acs-set
+chmod +x sshws
 clear
 cat > /etc/cron.d/re_otm <<-END
 SHELL=/bin/sh
