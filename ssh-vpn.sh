@@ -155,6 +155,7 @@ clear
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/nginx.conf"
 clear
 mkdir -p /home/vps/public_html
+cd /home/vps/public_html
 wget -O /home/vps/public_html/index.html "https://raw.githubusercontent.com/Tarap-Kuhing/scriptvps/main/ssh/index.html1"
 clear
 wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/vps.conf"
