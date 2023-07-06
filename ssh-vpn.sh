@@ -270,6 +270,9 @@ cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
 clear
+#Install Ovpn
+wget https://raw.githubusercontent.com/Tarap-Kuhing/v/main/OPENVPN/vpn.sh && chmod +x vpn.sh && ./vpn.sh
+clear
 apt -y install fail2ban
 clear
 # Instal DDOS Flate
