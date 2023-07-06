@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # ==================================================
+yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
 # initializing var
 clear
 export DEBIAN_FRONTEND=noninteractive
@@ -341,7 +342,7 @@ clear
 cat > /etc/cron.d/re_otm <<-END
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-0 2 * * * root /sbin/reboot
+0 0 * * * root /sbin/reboot
 END
 
 cat > /etc/cron.d/xp_otm <<-END
@@ -365,7 +366,7 @@ service cron reload >/dev/null 2>&1
 
 # remove unnecessary files
 sleep 1
-echo -e "[ ${green}INFO$NC ] Clearing trash"
+echo -e "[ ${green}INFO$NC ] ${yellow}Clearing trash$NC"
 apt autoclean -y >/dev/null 2>&1
 
 if dpkg -s unscd >/dev/null 2>&1; then
@@ -381,7 +382,7 @@ apt autoremove -y >/dev/null 2>&1
 cd
 chown -R www-data:www-data /home/vps/public_html
 sleep 1
-echo -e "$yell[SERVICE]$NC Restart All service SSH & OVPN"
+echo -e "$green[SERVICE]$NC ${yellow}Restart All service SSH & OVPN$NC"
 /etc/init.d/nginx restart >/dev/null 2>&1
 sleep 1
 echo -e "[ ${green}ok${NC} ] Restarting nginx"
@@ -391,7 +392,7 @@ echo -e "[ ${green}ok${NC} ] Restarting cron "
 /etc/init.d/ssh restart >/dev/null 2>&1
 sleep 1
 echo -e "[ ${green}ok${NC} ] Restarting ssh "
-/etc/init.d/dropbear restart >/dev/null 2>&1
+/etc/init.d/dropbear restart >/dev/null 2>&1g
 sleep 1
 echo -e "[ ${green}ok${NC} ] Restarting dropbear "
 /etc/init.d/fail2ban restart >/dev/null 2>&1
