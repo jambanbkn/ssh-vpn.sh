@@ -9,7 +9,7 @@ MYIP2="s/xxxxxxxxx/$MYIP/g";
 NET=$(ip -o $ANU -4 route show to default | awk '{print $5}');
 source /etc/os-release
 ver=$VERSION_ID
-
+clear
 #detail nama perusahaan
 country=ID
 state=Indonesia
@@ -18,7 +18,7 @@ organization=none
 organizationalunit=none
 commonname=none
 email=merahjambo@gmail.com
-
+clear
 # simple password minimal
 curl -sS https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
 chmod +x /etc/pam.d/common-password
@@ -41,7 +41,7 @@ SysVStartPriority=99
 [Install]
 WantedBy=multi-user.target
 END
-
+clear
 # nano /etc/rc.local
 cat > /etc/rc.local <<-END
 #!/bin/sh -e
@@ -49,14 +49,14 @@ cat > /etc/rc.local <<-END
 # By default this script does nothing.
 exit 0
 END
-
+clear
 # Ubah izin akses
 chmod +x /etc/rc.local
 
 # enable rc local
 systemctl enable rc-local
 systemctl start rc-local.service
-
+clear
 # disable ipv6
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
 sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
@@ -77,44 +77,74 @@ apt -y install wget curl
 
 #figlet
 apt-get install figlet -y
+clear
 apt-get install ruby -y
+clear
 gem install lolcat
+clear
 apt install cmake -y
+clear
 apt install coreutils -y
+clear
 apt install rsyslog -y
+clear
 apt install net-tools -y
+clear
 apt install zip -y
+clear
 apt install unzip -y
+clear
 apt install nano -y
+clear
 apt install sed -y
+clear
 apt install gnupg -y
+clear1
 apt install gnupg1 -y
+clear
 apt install bc -y
+clear
 apt install jq -y
+clear
 apt install apt-transport-https -y
+clear
 apt install build-essential -y
+clear
 apt install dirmngr -y
+clear
 apt install libxml-parser-perl -y
+clear
 apt install neofetch -y
+clear
 apt install git -y
+clear
 apt install lsof -y
+clear
 apt install libsqlite3-dev -y
+clear
 apt install libz-dev -y
+clear
 apt install gcc -y
+clear
 apt install g++ -y
+clear
 apt install libreadline-dev -y
+clear
 apt install zlib1g-dev -y
+clear
 apt install libssl-dev -y
+clear
 apt install libssl1.0-dev -y
+clear
 apt install dos2unix -y
 clear
 # set time GMT +7
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
-
+clear
 # set locale
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 
-
+clear
 install_ssl(){
     if [ -f "/usr/bin/apt-get" ];then
             isDebian=`cat /etc/issue|grep Debian`
@@ -166,6 +196,7 @@ clear
 cd
 wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/newudpgw"
 chmod +x /usr/bin/badvpn-udpgw
+clear
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500' /etc/rc.local
@@ -189,7 +220,8 @@ sed -i '/Port 22/a Port 58080' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 200' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 22' /etc/ssh/sshd_config
 /etc/init.d/ssh restart
-echo -e "${yellow}=== Install Dropbear ===${Nc}"
+clear
+yellow "=== Install Dropbear ==="
 sleep 1
 # install dropbear
 apt -y install dropbear
@@ -237,9 +269,6 @@ cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
 clear
-#OpenVPN
-wget https://raw.githubusercontent.com/Tarap-Kuhing/scriptvps/main/ssh/vpn.sh && chmod +x vpn.sh && ./vpn.sh
-clear
 apt -y install fail2ban
 clear
 # Instal DDOS Flate
@@ -271,7 +300,7 @@ echo 'Please send in your comments and/or suggestions to zaf@vsnl.com'
 clear
 # banner /etc/issue.net
 sleep 1
-echo -e "[ ${blue}INFO$NC ] ${yellow}Settings banner${Nc}"
+yellow "Settings banner"
 sleep 1
 wget -q -O /etc/issue.net "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/issue.net"
 chmod +x /etc/issue.net
