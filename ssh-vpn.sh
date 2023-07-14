@@ -21,12 +21,12 @@ commonname=none
 email=merahjambo@gmail.com
 clear
 # simple password minimal
-curl -sS https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
+curl -sS https://raw.githubusercontent.com/HssPunya93/apam/master/ssh/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
 chmod +x /etc/pam.d/common-password
-clear
+
 # go to root
 cd
-clear
+
 # Edit file /etc/systemd/system/rc-local.service
 cat > /etc/systemd/system/rc-local.service <<-END
 [Unit]
@@ -42,7 +42,7 @@ SysVStartPriority=99
 [Install]
 WantedBy=multi-user.target
 END
-clear
+
 # nano /etc/rc.local
 cat > /etc/rc.local <<-END
 #!/bin/sh -e
@@ -50,94 +50,38 @@ cat > /etc/rc.local <<-END
 # By default this script does nothing.
 exit 0
 END
-clear
+
 # Ubah izin akses
 chmod +x /etc/rc.local
 
 # enable rc local
 systemctl enable rc-local
 systemctl start rc-local.service
-clear
+
 # disable ipv6
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
 sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
-clear
+
 #update
 apt update -y
 apt upgrade -y
 apt dist-upgrade -y
 apt-get remove --purge ufw firewalld -y
 apt-get remove --purge exim4 -y
-clear
+
+#install jq
+apt -y install jq
 
 #install shc
 apt -y install shc
-clear
+
 # install wget and curl
 apt -y install wget curl
 
 #figlet
 apt-get install figlet -y
-clear
 apt-get install ruby -y
-clear
 gem install lolcat
-clear
-apt install cmake -y
-clear
-apt install coreutils -y
-clear
-apt install rsyslog -y
-clear
-apt install net-tools -y
-clear
-apt install zip -y
-clear
-apt install unzip -y
-clear
-apt install nano -y
-clear
-apt install sed -y
-clear
-apt install gnupg -y
-clear1
-apt install gnupg1 -y
-clear
-apt install bc -y
-clear
-apt install jq -y
-clear
-apt install apt-transport-https -y
-clear
-apt install build-essential -y
-clear
-apt install dirmngr -y
-clear
-apt install libxml-parser-perl -y
-clear
-apt install neofetch -y
-clear
-apt install git -y
-clear
-apt install lsof -y
-clear
-apt install libsqlite3-dev -y
-clear
-apt install libz-dev -y
-clear
-apt install gcc -y
-clear
-apt install g++ -y
-clear
-apt install libreadline-dev -y
-clear
-apt install zlib1g-dev -y
-clear
-apt install libssl-dev -y
-clear
-apt install libssl1.0-dev -y
-clear
-apt install dos2unix -y
 clear
 # set time GMT +7
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
@@ -385,7 +329,7 @@ apt autoremove -y >/dev/null 2>&1
 cd
 chown -R www-data:www-data /home/vps/public_html
 sleep 1
-echo -e "$green[SERVICE]$NC ${yellow}Restart All service SSH & OVPN$NC"
+echo -e "$green[SERVICE]$NC Restart All service SSH & OVPN"
 /etc/init.d/nginx restart >/dev/null 2>&1
 sleep 1
 echo -e "[ ${green}ok${NC} ] Restarting nginx"
