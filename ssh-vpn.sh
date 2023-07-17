@@ -21,7 +21,7 @@ commonname=none
 email=merahjambo@gmail.com
 clear
 # simple password minimal
-curl -sS https://raw.githubusercontent.com/HssPunya93/apam/master/ssh/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
+curl -sS https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
 chmod +x /etc/pam.d/common-password
 
 # go to root
@@ -125,20 +125,18 @@ install_ssl(){
 }
 clear
 # install webserver
-apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
-clear
+apt -y install nginx
+cd
+rm /etc/nginx/sites-enabled/default
+rm /etc/nginx/sites-available/default
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/nginx.conf"
-clear
 mkdir -p /home/vps/public_html
-cd /home/vps/public_html
-wget -O /home/vps/public_html/index.html "https://raw.githubusercontent.com/Tarap-Kuhing/scriptvps/main/ssh/index.html1"
-clear
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/vps.conf"
+rm /etc/nginx/conf.d/vps.conf
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/Tarap-Kuhing/tarong/main/tarong/SSH/vps.conf"
 /etc/init.d/nginx restart
 cd
 clear
 # install badvpn
-cd
 wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/ssh/newudpgw"
 chmod +x /usr/bin/badvpn-udpgw
 clear
@@ -166,8 +164,7 @@ sed -i '/Port 22/a Port 200' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 22' /etc/ssh/sshd_config
 /etc/init.d/ssh restart
 clear
-yellow "=== Install Dropbear ==="
-sleep 1
+echo "=== Install Dropbear ==="
 # install dropbear
 apt -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
